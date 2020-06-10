@@ -4,7 +4,7 @@ This is a very basic extension to the Albert launcher on Linux, allowing you to 
 
 ## Installation
 
-    git clone https://github.com/clearedTakeoff/Albert-Radarr-Extension ~/.local/share/albert/org.albert.extension.python/modules/Radarr
+    git clone https://github.com/clearedTakeoff/Albert-Radarr-Extension.git ~/.local/share/albert/org.albert.extension.python/modules/Radarr
 After cloning, edit *radarr.conf* to include URL to your Radarr server and API key.
 Finally enable the extension within the Albert Python extensions.
 
