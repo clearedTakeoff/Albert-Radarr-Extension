@@ -49,7 +49,6 @@ def queryRadarrMovies(query):
     response = requests.get(radarr_api + "/lookup?term=" + query + "&apikey=" + api_key)
     items = []
     for movie in response.json():
-        print(movie)
         movie_url = "https://themoviedb.org/movie/" + str(movie["tmdbId"])
         new_item = Item(id=movie["sortTitle"],
                         text=movie["title"] + " (" + str(movie["year"]) + ") " + str(movie["ratings"]["value"]),
