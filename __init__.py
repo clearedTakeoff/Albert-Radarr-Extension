@@ -62,7 +62,7 @@ def postToRadarr(movie=None):
     global radarr_api
     global api_key
     global root_folder
-    #print("In here! Posting", movie)
+
     if movie is not None:
         movie["qualityProfileId"] = 0
         movie["profileId"] = 3
