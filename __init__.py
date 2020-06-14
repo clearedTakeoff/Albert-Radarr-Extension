@@ -16,10 +16,11 @@ __author__ = "clearedTakeoff"
 __dependencies__ = []
 
 config = configparser.ConfigParser()
-config.read("radarr.conf")
+config.read(str(configLocation()) + "/radarr.conf")
 api_key = config["server"]["api"]
 radarr_api = config["server"]["url"] + "/api/movie"
 radarr_home = config["server"]["url"] + "/movies"
+config_folder = config["server"]["folder"]
 
 def handleQuery(query):
     if query.isTriggered:
@@ -60,12 +61,13 @@ def queryRadarrMovies(query):
 def postToRadarr(movie=None):
     global radarr_api
     global api_key
+    global root_folder
     #print("In here! Posting", movie)
     if movie is not None:
         movie["qualityProfileId"] = 0
         movie["profileId"] = 3
-        movie["rootFolderPath"]= "/home/hd28/bytesaremine/media/Movies"
+        movie["rootFolderPath"] = config_folder
         movie["monitored"] = "true"
-        movie["addOptions"]  = {"ignoreEpisodesWithFiles":"false","ignoreEpisodesWithoutFiles":"false","searchForMovie":"false"}
+        movie["addOptions"]  =  {"ignoreEpisodesWithFiles":"false","ignoreEpisodesWithoutFiles":"false","searchForMovie":"false"}
         headers = {"X-Api-Key": api_key}
         requests.post(radarr_api, headers=headers, data=json.dumps(movie))
